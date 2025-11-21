@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nate's Autobahn - Premium Auto Sales</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1><span class="material-icons">directions_car</span> Nate's Autobahn</h1>
+            <p class="subtitle">Premium Auto Sales</p>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="cart.html">Cart</a></li>
+                    <li><a href="login.html">Login</a></li>
+                    <li><a href="register.html" class="nav-btn">Register</a></li>
+                </ul>
+            </nav>
+        </header>
+        
+        <main>
+            <section class="featured-cars">
+                <h2>Featured Vehicles</h2>
+                <div class="car-grid">
+                    <div class="car-card">
+                        <img src="https://images.unsplash.com/photo-1563720360172-67b8f3dce741" alt="Mercedes-Benz S-Class">
+                        <h3>2023 Mercedes-Benz S-Class</h3>
+                        <p class="price">$110,000.00</p>
+                        <button onclick="addToCart('2023 Mercedes-Benz S-Class', 110000.00)" class="add-to-cart-btn">
+                            <span class="material-icons">add_shopping_cart</span> Add to Cart
+                        </button>
+                    </div>
+                    <div class="car-card">
+                        <img src="https://cdn.motor1.com/images/mgl/AkQoLO/s1/bmw-m5-touring-2025.jpg" alt="BMW M5">
+                        <h3>2025 BMW M5</h3>
+                        <p class="price">$115,000.00</p>
+                        <button onclick="addToCart('2025 BMW M5', 115000.00)" class="add-to-cart-btn">
+                            <span class="material-icons">add_shopping_cart</span> Add to Cart
+                        </button>
+                    </div>
+                    <div class="car-card">
+                        <img src="https://images.unsplash.com/photo-1614200187524-dc4b892acf16" alt="Porsche 911 GT3">
+                        <h3>2023 Porsche 911 GT3</h3>
+                        <p class="price">$175,000.00</p>
+                        <button onclick="addToCart('2023 Porsche 911 GT3', 175000.00)" class="add-to-cart-btn">
+                            <span class="material-icons">add_shopping_cart</span> Add to Cart
+                        </button>
+                    </div>
+                    <div class="car-card">
+                        <img src="https://images.unsplash.com/photo-1617814076367-b759c7d7e738" alt="Audi RS e-tron GT">
+                        <h3>2023 Audi RS e-tron GT</h3>
+                        <p class="price">$145,000.00</p>
+                        <button onclick="addToCart('2023 Audi RS e-tron GT', 145000.00)" class="add-to-cart-btn">
+                            <span class="material-icons">add_shopping_cart</span> Add to Cart
+                        </button>
+                    </div>
+                    <div class="car-card">
+                        <img src="https://images.unsplash.com/photo-1612825173281-9a193378527e" alt="Lamborghini Huracan EVO">
+                        <h3>2023 Lamborghini Huracan EVO</h3>
+                        <p class="price">$265,000.00</p>
+                        <button onclick="addToCart('2023 Lamborghini Huracan EVO', 265000.00)" class="add-to-cart-btn">
+                            <span class="material-icons">add_shopping_cart</span> Add to Cart
+                        </button>
+                    </div>
+                    <div class="car-card">
+                        <img src="https://images.unsplash.com/photo-1619682817481-e994891cd1f5" alt="Tesla Model S Plaid">
+                        <h3>2023 Tesla Model S Plaid</h3>
+                        <p class="price">$135,000.00</p>
+                        <button onclick="addToCart('2023 Tesla Model S Plaid', 135000.00)" class="add-to-cart-btn">
+                            <span class="material-icons">add_shopping_cart</span> Add to Cart
+                        </button>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer>
+            <p>&copy; 2025 Nathan-Neil Shelly. All rights reserved.</p>
+        </footer>
+    </div>
+
+    <script>
+        function addToCart(name, price) {
+            // In a real application, this would store the item in localStorage or send to a server
+            // Simple localStorage/sessionStorage cart implementation
+            let cart = [];
+            try {
+                cart = JSON.parse(localStorage.getItem('cart') || '[]');
+            } catch (e) {
+                cart = JSON.parse(sessionStorage.getItem('cart') || '[]');
+            }
+            const existing = cart.find(i => i.name === name);
+            if (existing) existing.quantity += 1; else cart.push({name, price, quantity:1});
+            try {
+                localStorage.setItem('cart', JSON.stringify(cart));
+            } catch (e) {
+                sessionStorage.setItem('cart', JSON.stringify(cart));
+            }
+            // small visual confirmation
+            alert(`${name} added to cart`);
+            window.location.href = 'cart.html';
+        }
+    </script>
+    <script src="ui.js"></script>
+</body>
+</html>

@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout - Nate's Autobahn</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1><span class="material-icons">directions_car</span> Nate's Autobahn</h1>
+            <p class="subtitle">Premium Auto Sales</p>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="cart.html">Cart</a></li>
+                    <li><a href="login.html">Login</a></li>
+                </ul>
+            </nav>
+        </header>
+        
+        <main>
+            <section class="checkout-section">
+                <h2>Checkout</h2>
+                <div class="checkout-container">
+                    <div class="shipping-details">
+                        <h3>Shipping Details</h3>
+                        <form id="checkoutForm" onsubmit="handleCheckout(event)">
+                            <div class="input-group">
+                                <label for="fullName">Full Name:</label>
+                                <input type="text" id="fullName" required>
+                            </div>
+
+                            <div class="input-group">
+                                <label for="email">Email:</label>
+                                <input type="email" id="email" required>
+                            </div>
+
+                            <div class="input-group">
+                                <label for="phone">Phone:</label>
+                                <input type="tel" id="phone" required>
+                            </div>
+
+                            <div class="input-group">
+                                <label for="address">Address:</label>
+                                <textarea id="address" required></textarea>
+                            </div>
+
+                            <div class="input-group">
+                                <label for="city">City:</label>
+                                <input type="text" id="city" required>
+                            </div>
+
+                            <div class="input-group">
+                                <label for="parish">Parish:</label>
+                                <select id="parish" required>
+                                    <option value="">Select Parish</option>
+                                    <option value="Kingston">Kingston</option>
+                                    <option value="St. Andrew">St. Andrew</option>
+                                    <option value="St. Catherine">St. Catherine</option>
+                                    <option value="Clarendon">Clarendon</option>
+                                    <option value="Manchester">Manchester</option>
+                                    <option value="St. Elizabeth">St. Elizabeth</option>
+                                    <option value="Westmoreland">Westmoreland</option>
+                                    <option value="Hanover">Hanover</option>
+                                    <option value="St. James">St. James</option>
+                                    <option value="Trelawny">Trelawny</option>
+                                    <option value="St. Ann">St. Ann</option>
+                                    <option value="St. Mary">St. Mary</option>
+                                    <option value="Portland">Portland</option>
+                                    <option value="St. Thomas">St. Thomas</option>
+                                </select>
+                            </div>
+
+                            <div class="input-group">
+                                <label for="amount">Amount Being Paid:</label>
+                                <input type="number" id="amount" min="0" step="0.01" required>
+                            </div>
+
+                            <div class="input-group">
+                                <label for="cardName">Cardholder Name:</label>
+                                <input type="text" id="cardName" placeholder="Name on card" required>
+                            </div>
+
+                            <div class="input-group">
+                                <label for="cardNumber">Card Number:</label>
+                                <input type="text" id="cardNumber" placeholder="1234 5678 9012 3456" maxlength="19" required>
+                            </div>
+
+                            <div class="input-row">
+                                <div class="input-group">
+                                    <label for="expiryDate">Expiry Date:</label>
+                                    <input type="text" id="expiryDate" placeholder="MM/YY" maxlength="5" required>
+                                </div>
+
+                                <div class="input-group">
+                                    <label for="cvv">CVV:</label>
+                                    <input type="text" id="cvv" placeholder="123" maxlength="4" required>
+                                </div>
+                            </div>
+                                <button type="submit" class="confirm-btn">
+                                    <span class="material-icons">check_circle</span> Confirm Order
+                                </button>
+                                <button type="button" class="cancel-btn" onclick="window.location.href='cart.html'">
+                                    <span class="material-icons">cancel</span> Cancel
+                                </button>
+                                <button type="button" class="clear-btn" onclick="clearForm()">
+                                    <span class="material-icons">clear_all</span> Clear All
+                                </button>
+                                <button type="button" class="close-btn" onclick="window.close()">
+                                    <span class="material-icons">close</span> Close
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+
+                    <div class="order-summary">
+                        <h3>Order Summary</h3>
+                        <div class="summary-content">
+                            <!-- Order summary will be populated by JavaScript -->
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer>
+            <p>&copy; 2025 Nathan-Neil Shelly. All rights reserved.</p>
+        </footer>
+    </div>
+
+    <script src="ui.js"></script>
+</body>
+</html>
